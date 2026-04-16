@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARC | The Sanctuary for Your Mind</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN for rapid styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        arc: {
+                            light: {
+                                bg: '#fdfbf7',
+                                paper: '#ffffff',
+                                text: '#2d2d2d',
+                                textDim: '#8b8b8b',
+                            },
+                            dark: {
+                                bg: '#0D0B0A',
+                                paper: '#241F1C',
+                                text: '#efe9de',
+                                textDim: '#9C9283',
+                            },
+                            tint: '#d4af37',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Background Transitions */
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* 
+         * Fade-Up Engine 
+         * Uses a custom cubic-bezier for a luxurious, delayed cinematic stop
+         */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered Delays for chained reveals */
+        .delay-100 {
+            transition-delay: 100ms;
+        }
+
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+
+        .delay-300 {
+            transition-delay: 300ms;
+        }
+
+        /* Premium Minimalist Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.3);
+            /* Gold tint */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 175, 55, 0.6);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-arc-light-bg dark:bg-arc-dark-bg text-arc-light-text dark:text-arc-dark-text font-sans antialiased selection:bg-arc-tint/30 selection:text-arc-tint min-h-screen flex flex-col">
+
+    <!-- HEADER (Minimalist, fixed glass effect) -->
+    <header
+        class="fixed top-0 inset-x-0 z-50 px-6 py-5 bg-arc-light-bg/80 dark:bg-arc-dark-bg/80 backdrop-blur-md transition-colors duration-500">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Theme Toggle Button -->
+            <button id="themeToggle" class="group p-2 -ml-2 rounded-full transition-colors focus:outline-none"
+                aria-label="Toggle Theme">
+                <!-- Sun Icon -->
+                <svg id="sunIcon"
+                    class="w-5 h-5 text-arc-dark-textDim group-hover:text-arc-dark-text transition-colors hidden"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                    </path>
+                </svg>
+                <!-- Moon Icon -->
+                <svg id="moonIcon"
+                    class="w-5 h-5 text-arc-light-textDim group-hover:text-arc-light-text transition-colors" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Brand Typography -->
+            <a href="#"
+                class="absolute left-1/2 -translate-x-1/2 font-serif text-2xl tracking-[0.2em] text-arc-light-text dark:text-arc-dark-text transition-colors duration-500">ARC</a>
+
+            <!-- Header Status -->
+            <span class="text-[10px] uppercase tracking-[0.2em] opacity-60">Coming Soon</span>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+
+        <!-- HERO SECTION -->
+        <section
+            class="relative pt-40 pb-20 md:pt-48 md:pb-32 px-6 flex flex-col items-center justify-center min-h-[90vh] text-center max-w-5xl mx-auto">
+            <div class="fade-up w-full">
+                <h1
+                    class="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[1.15] md:leading-[1.1] text-arc-light-text dark:text-arc-dark-text md:tracking-tight transition-colors duration-500">
+                    Life is messy.<br>
+                    <span class="italic text-arc-light-textDim dark:text-arc-dark-textDim font-light">Stories give it
+                        structure.</span>
+                </h1>
+            </div>
+
+            <div class="fade-up delay-100 mt-8 md:mt-12 max-w-2xl mx-auto">
+                <p
+                    class="text-lg md:text-xl font-light text-arc-light-textDim dark:text-arc-dark-textDim leading-relaxed md:leading-relaxed transition-colors duration-500 px-4">
+                    Don’t just count your days — turn them into chapters.<br class="hidden md:block">
+                    The offline, AI-powered sanctuary for your mind.
+                </p>
+            </div>
+
+            <div class="fade-up delay-200">
+                <p class="font-serif italic text-xl md:text-2xl text-arc-tint mt-8">
+                    ARC is almost ready.<br><br>
+                    Coming soon to the App Store.
+                </p>
+            </div>
+        </section>
+
+        <!-- THE DIVIDER (Golden thread binding) -->
+        <div class="flex justify-center items-center h-32 md:h-48 my-8 opacity-60 pointer-events-none">
+            <div class="w-[1px] h-full bg-gradient-to-b from-transparent via-arc-tint to-transparent fade-up delay-300">
+            </div>
+        </div>
+
+        <!-- FEATURES SECTION (Editorial Layout) -->
+        <section class="py-16 md:py-32 px-6 max-w-3xl mx-auto space-y-32 md:space-y-48">
+
+            <!-- Feature I -->
+            <div class="fade-up flex flex-col items-center text-center">
+                <span class="block text-arc-tint font-serif italic text-xl md:text-2xl mb-6">I</span>
+                <h2
+                    class="font-serif text-3xl md:text-5xl text-arc-light-text dark:text-arc-dark-text mb-6 transition-colors duration-500">
+                    Absolute Solitude
+                </h2>
+                <p
+                    class="font-light text-arc-light-textDim dark:text-arc-dark-textDim text-base md:text-xl leading-relaxed transition-colors duration-500 max-w-xl">
+                    100% offline. No servers, no noise. Your Memories remain completely yours, securely bound within
+                    your device.
+                </p>
+            </div>
+
+            <!-- Feature II -->
+            <div class="fade-up flex flex-col items-center text-center">
+                <span class="block text-arc-tint font-serif italic text-xl md:text-2xl mb-6">II</span>
+                <h2
+                    class="font-serif text-3xl md:text-5xl text-arc-light-text dark:text-arc-dark-text mb-6 transition-colors duration-500">
+                    Profound Reflections
+                </h2>
+                <p
+                    class="font-light text-arc-light-textDim dark:text-arc-dark-textDim text-base md:text-xl leading-relaxed transition-colors duration-500 max-w-xl">
+                    Your daily thoughts, Into deeper wisdom.
+                </p>
+            </div>
+
+            <!-- Feature III -->
+            <div class="fade-up flex flex-col items-center text-center">
+                <span class="block text-arc-tint font-serif italic text-xl md:text-2xl mb-6">III</span>
+                <h2
+                    class="font-serif text-3xl md:text-5xl text-arc-light-text dark:text-arc-dark-text mb-6 transition-colors duration-500">
+                    Beautiful Chapters
+                </h2>
+                <p
+                    class="font-light text-arc-light-textDim dark:text-arc-dark-textDim text-base md:text-xl leading-relaxed transition-colors duration-500 max-w-xl">
+                    Watch your scattered days bind into beautifully titled chapters. An elegant journal that writes the
+                    book of your life.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- FOOTER STATUS (Closing the book) -->
+        <div id="early-access" class="py-24 px-6 text-center fade-up mt-12 md:mt-24">
+            <p
+                class="font-serif italic text-2xl md:text-3xl text-arc-light-textDim dark:text-arc-dark-textDim mb-10 transition-colors duration-500">
+                Begin your ARC Journey.
+            </p>
+            <span class="text-xs uppercase tracking-[0.2em] opacity-40">Available Soon</span>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+        class="mt-auto py-12 px-6 border-t border-arc-light-textDim/10 dark:border-arc-dark-textDim/10 transition-colors duration-500">
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+            <a href="#"
+                class="font-serif text-xl tracking-[0.2em] text-arc-light-text dark:text-arc-dark-text transition-colors duration-500 mb-8">ARC</a>
+
+            <div class="flex flex-wrap justify-center gap-6 mb-8">
+                <a href="mailto:arcjournals.dev@gmail.com"
+                    class="text-sm text-arc-light-textDim dark:text-arc-dark-textDim hover:text-arc-tint transition-colors">Support</a>
+                <a href="privacy-policy.html"
+                    class="text-sm text-arc-light-textDim dark:text-arc-dark-textDim hover:text-arc-tint transition-colors">Privacy</a>
+                <a href="terms-of-service.html"
+                    class="text-sm text-arc-light-textDim dark:text-arc-dark-textDim hover:text-arc-tint transition-colors">Terms</a>
+                <a href="licenses.html"
+                    class="text-sm text-arc-light-textDim dark:text-arc-dark-textDim hover:text-arc-tint transition-colors">Licenses</a>
+            </div>
+
+            <p class="text-xs text-arc-light-textDim/60 dark:text-arc-dark-textDim/60 transition-colors duration-500">
+                &copy; <span id="currentYear"></span> ARC Journal. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- INTERACTION LOGIC -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // --- 1. THEME TOGGLE LOGIC ---
+            const themeToggle = document.getElementById('themeToggle');
+            const htmlElement = document.documentElement;
+            const sunIcon = document.getElementById('sunIcon');
+            const moonIcon = document.getElementById('moonIcon');
+
+            function applyTheme(isDark) {
+                if (isDark) {
+                    htmlElement.classList.add('dark');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                    localStorage.setItem('arc-theme', 'dark');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                    localStorage.setItem('arc-theme', 'light');
+                }
+            }
+
+            // Initialization logic (Priority checks: Local Storage -> System Pref)
+            const savedTheme = localStorage.getItem('arc-theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                applyTheme(savedTheme === 'dark');
+            } else {
+                applyTheme(systemPrefersDark);
+            }
+
+            // Click Handler
+            themeToggle.addEventListener('click', () => {
+                const isDarkNow = htmlElement.classList.contains('dark');
+                applyTheme(!isDarkNow);
+            });
+
+            // React to system changes live (if user hasn't overridden manually)
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('arc-theme')) {
+                    applyTheme(e.matches);
+                }
+            });
+
+            // --- 2. LUXURY FADE-UP ANIMATION MANAGER ---
+            const fadeUpElements = document.querySelectorAll('.fade-up');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px', // Animates slightly before crossing the threshold
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target); // Standard 'play once' mechanic
+                    }
+                });
+            }, observerOptions);
+
+            fadeUpElements.forEach(el => observer.observe(el));
+
+            // --- 3. DYNAMIC FOOTER YEAR ---
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+
+</html>
